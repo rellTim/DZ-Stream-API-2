@@ -19,8 +19,8 @@ public class Main {
         System.out.println("Количество несовершенно летний составила по статисте - " + notExactlySummer);
         List<String> prizeWinners= persons.stream().filter(person -> person.getAge()>=18 && person.getAge()<=27&&person.getSex()==Sex.MAN).map(Person::getFamily).collect(Collectors.toList());// фамили призывников (парней)
         System.out.println(prizeWinners);
-        List<Person> withHigherEducation = persons.stream().filter(person -> person.getEducation()==Education.HIGHER&&person.getAge()>=18&&person.getAge()<65)
-                .sorted(Comparator.comparing(person -> person.getFamily())).collect(Collectors.toList());// Может работать + вышка
+        List<String> withHigherEducation = persons.stream().filter(person -> person.getEducation()==Education.HIGHER&&person.getAge()>=18&&person.getAge()<65)
+                .sorted(Comparator.comparing(person -> person.getFamily())).map(Person::getFamily).collect(Collectors.toList());// Может работать + вышка
         System.out.println(withHigherEducation);
     }
 }
